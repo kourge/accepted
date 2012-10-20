@@ -28,7 +28,8 @@ class renderer(object):
         })
 
 class profile(renderer):
-    pass
+    def POST(self):
+      return repr(web.input().keys())
 
 class resume(renderer):
     pass

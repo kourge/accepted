@@ -16,18 +16,18 @@
       
   {% else %}
       <p>Enter some basic information to get started!</p>
-      <form>
+      <form action="/profile" method="post">
         <label for="firstname">First Name: </label>
-        <input type="text" id="firstname" />
+        <input type="text" id="firstname" name="firstname" />
 
         <label for="lastname">Last Name: </label>
-        <input type="text" id="lastname" />
+        <input type="text" id="lastname" name="lastname" />
 
         <label for="age">Age: </label>
-        <input type="text" id="age" />
+        <input type="text" id="age" name="age" />
 
         <label for="school">School: </label>
-        <input type="text" id="school" />
+        <input type="text" id="school" name="school" />
         <br />
         <input type="submit" class="btn" value="Submit" />
       </form>
