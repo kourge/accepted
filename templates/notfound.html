@@ -1,0 +1,28 @@
+{% extends "templates/base.html" %}
+
+{% if user %}
+set title = 'Page Not Found'
+{% else %}
+set title = 'Welcome'
+{% endif %}
+
+{% block title %}Page Not Found{% endblock %}
+
+{% block content %}
+<div class="row-fluid">
+  <div class="span1">
+  </div>
+  <div class="span10">
+    <div class="hero-unit">
+  {% if not user %}
+      <h3>Log In</h3>
+      <p>Log in with your Google Account to get started!</p>
+      <p><a class="btn btn-primary btn-large" href="/login">Log In! &raquo;</a></p>
+    </div>
+  {% else %}
+      <p>We're sorry, the page located at {{ path }} was not found.</p>
+  {% endif %}
+    </div>
+  </div><!--/span-->
+</div><!--/row-->
+{% endblock %}

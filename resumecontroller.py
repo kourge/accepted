@@ -3,5 +3,8 @@ import web
 from controller import Controller
 
 class ResumeController(Controller):
-    pass
+    require_logged_in = True
+
+    def __init__(self):
+        super(self.__class__, self).__init__()
 

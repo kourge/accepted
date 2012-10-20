@@ -3,6 +3,7 @@ import web
 
 import auth
 import controller
+from notfoundcontroller import NotFoundController
 from profilecontroller import ProfileController
 from resumecontroller import ResumeController
 from exportcontroller import ExportController
@@ -23,6 +24,7 @@ urls = (
 class IndexController(controller.Controller):
     pass
 
+
 class login(object):
     def GET(self):
         return auth.login(web.ctx.env.get('HTTP_REFERER'))
@@ -33,4 +35,7 @@ class logout(object):
         return auth.logout('/')
 
 
-app = web.application(urls, globals()).wsgifunc()
+application = web.application(urls, globals())
+application.notfound = NotFoundController()
+
+app = application.wsgifunc()
