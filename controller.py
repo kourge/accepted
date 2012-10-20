@@ -19,7 +19,7 @@ class Controller(object):
     def GET(self, variables={}):
         name = self.__class__.__name__.replace('Controller', '').lower()
         defaults = {
-            'user' : auth.user(), 'admin' : auth.is_admin()
+            'user' : auth.user(), 'admin' : auth.is_admin(), 'path' : web.ctx.path
         }
         defaults.update(variables)
 

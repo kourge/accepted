@@ -40,10 +40,10 @@
           <a class="brand" href="/">Accepted!</a>
           <div class="nav-collapse collapse">
             <ul class="nav">
-              <li><a href="/">Home</a></li>
+              <li {% if path == "/" %} class="active" {% endif %} ><a href="/">Home</a></li>
               {% if user %}
-              <li><a href="/profile">Profile</a></li>
-              <li><a href="/resume">Resume</a></li>
+              <li {% if path == "/profile" %} class="active" {% endif %} ><a href="/profile">Profile</a></li>
+              <li {% if path == "/resume" %} class="active" {% endif %} ><a href="/resume">Resume</a></li>
               {% endif %}
               {% if admin %}
               <li><a href="/admin">Admin</a></li>
