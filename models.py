@@ -6,7 +6,6 @@ from google.appengine.ext import db
 class Activity(db.Model):
     uid = db.IntegerProperty(required=True, indexed=True)
 
-    """An activity such as sports or extracurriculars."""
     type = db.StringProperty(
         required=True, choices=set(['sports', 'extracurriculars'])
     )
@@ -61,7 +60,6 @@ class SatSubjectScore(db.Model):
 
 
 class Profile(db.Model):
-    """Models a profile."""
     # We should explicitly store the user ID, since the User object does not update
     # accordingly when the user changes email address.
     uid = db.IntegerProperty(required=True, indexed=True)
