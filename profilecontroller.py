@@ -2,7 +2,7 @@
 import web
 import auth
 from controller import Controller
-from models import Profile
+from models import Profile, SatSubjectScore
 
 class ProfileController(Controller):
 
@@ -11,7 +11,11 @@ class ProfileController(Controller):
 
     def GET(self):
         p = Profile.get_by_key_name(self.key) or {}
-        return super(self.__class__, self).GET({'profile': p})
+        return super(self.__class__, self).GET({
+            'profile' : p,
+            'groups' : SatSubjectScore._subject_categories,
+            'subjects' : SatSubjectScore._subjects
+        })
 
     def POST(self):
         params = web.input()
