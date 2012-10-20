@@ -46,7 +46,7 @@
               <li {% if path == "/resume" %} class="active" {% endif %} ><a href="/resume">Resume</a></li>
               {% endif %}
               {% if admin %}
-              <li><a href="/admin">Admin</a></li>
+              <li {% if path == "/admin" %} class="active" {% endif %} ><a href="/admin">Admin</a></li>
               {% endif %}
             </ul>
             <ul class="nav pull-right">
