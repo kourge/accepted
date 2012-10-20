@@ -25,10 +25,14 @@ class ExportController(Controller):
     def dump(self, uid):
         key = str(uid)
         export = {}
-        for model in [Profile, SatScore, SatSubjectScore]:
+
+        for model in [Profile, SatScore]:
             e = model.get_by_key_name(key)
             if e:
                 export.update(db.to_dict(e))
+
+        for subject in SatSubjectScore.filter('uid =', uid):
+            pass
 
         return json.dumps(export)
 
