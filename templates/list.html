@@ -14,13 +14,15 @@
           <th>Last Name</th>
           <th>Age</th>
           <th>School</th>
+          <th>Last Active</th>
         </tr>
-        {% for s in students %}
+        {% for s in students.keys() %}
           <tr>
-            <td>{{ s.firstname }}</td>
-            <td>{{ s.lastname }}</td>
-            <td>{{ s.age }}</td>
-            <td>{{ s.school }}</td>
+            <td>{{ students[s].firstname }}</td>
+            <td>{{ students[s].lastname }}</td>
+            <td>{{ students[s].age }}</td>
+            <td>{{ students[s].school }}</td>
+            <td>{{ students[s].last_online }}</td>
           </tr>
         {% endfor %}
       </table>

@@ -12,8 +12,13 @@ class ListController(Controller):
 
     def GET(self):
         if auth.is_admin():
-          q = db.GqlQuery("SELECT * FROM Profile")
-          return super(self.__class__, self).GET({'students' : q})
+          results = dict()
+          for profile in db.GqlQuery("SELECT * FROM Profile ORDER BY uid"):
+              results[profile.uid] = profile
+          for l in db.GqlQuery("SELECT * FROM LastOnline ORDER BY uid"):
+              if l.uid in results:
+                  results[l.uid].last_online = l.last_online
+          return super(self.__class__, self).GET({'students' : results})
         else:
           return "Access Denied!"
 

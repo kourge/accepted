@@ -71,3 +71,8 @@ class Profile(db.Model):
     school = db.StringProperty(required=True)
 
 
+class LastOnline(db.Model):
+    uid = db.StringProperty(required=True, indexed=True)
+    last_online = db.DateTimeProperty(required=True, auto_now=True)
+
+
