@@ -28,7 +28,7 @@ class ProfileController(Controller):
         if not p:
             p = Profile(key_name=self.key, **attrs)
         else:
-            for k, v in attrs.items():
+            for k, v in attrs.iteritems():
                 setattr(p, k, v)
 
         try:
