@@ -7,6 +7,7 @@
   </div>
   <div class="span10">
     <div class="hero-unit">
+      {% if students %}
       <p>Welcome back, admin!</p>
       <table class="table table-striped table-bordered">
         <tr>
@@ -15,6 +16,7 @@
           <th>Age</th>
           <th>School</th>
           <th>Last Active</th>
+          <th></th>
         </tr>
         {% for s in students.keys() %}
           <tr>
@@ -23,9 +25,19 @@
             <td>{{ students[s].age }}</td>
             <td>{{ students[s].school }}</td>
             <td>{{ students[s].last_online }}</td>
+            <td><a href="/admin/{{ s }}">View Profile</a></td>
           </tr>
         {% endfor %}
       </table>
+      {% elif student %}
+      <h2>{{ student.firstname }} {{ student.lastname }}'s Profile</h2>
+      <p>Age: {{ student.age }}</p>
+      <p>School: {{ student.school }}</p>
+        {% if activity %}
+      <p>Last Active: {{ activity.last_online }}</p>
+        {% endif %}
+      {% endif %}
+
     </div>
   </div><!--/span-->
 </div><!--/row-->

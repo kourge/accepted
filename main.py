@@ -16,6 +16,7 @@ urls = (
     r'/profile', 'ProfileController',
     r'/resume', 'ResumeController',
     r'/admin', 'ListController',
+    r'/admin/(.+)', 'ListController',
     r'/export/(.+)', 'ExportController',
     r'/', 'IndexController',
 )
