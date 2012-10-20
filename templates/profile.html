@@ -1,6 +1,10 @@
 {% extends "templates/base.html" %}
 {% block title %}Profile{% endblock %}
 
+{% block childjs %}
+<script src="../static/js/profile.js"></script>
+{% endblock %}
+
 {% block content %}
 <div class="row-fluid">
   <div class="span1">
@@ -45,21 +49,27 @@
           <input type="text" id="writing" name="writing"
                  value="{{ sat.writing }}" />
 
-          <label for="sat_ii_topic">SAT II</label>
-          <select id="sat_ii_topic" name="sat_ii_topic">
-            {% for group in groups %}
-            <optgroup label="{{ group }}">
-              {% for subject in subjects[group] %}
-                <option value="{{ subject }}">{{ subject }}</option>
+          <br />
+          <br />
+
+          <div class="sat_subject">
+            <label class="sat_subject_label" for="sat_subject">SAT II</label>
+            <select class="sat_subject_select" name="sat_subject">
+              {% for group in groups %}
+              <optgroup label="{{ group }}">
+                {% for subject in subjects[group] %}
+                  <option value="{{ subject }}">{{ subject }}</option>
+                {% endfor %}
+              </optgroup>
               {% endfor %}
-            </optgroup>
-            {% endfor %}
-          </select>
-          <input type="text" id="sat_ii_score" name="sat_ii_score"
-                 value="" />
+            </select>
+            <input type="text" class="sat_subject_score" name="sat_subject_score"
+                   value="" />
+          </div>
+          <p id="add_sat_subject"><a class="btn">Add another SAT II Subject Test</a></p>
 
           <br />
-          <input type="submit" class="btn" value="Submit" />
+          <input type="submit" class="btn btn-large btn-primary" value="Save" />
       </form>
   {% endif %}
     </div>
