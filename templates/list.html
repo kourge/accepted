@@ -1,0 +1,30 @@
+{% extends "templates/base.html" %}
+{% block title %}Admin Panel{% endblock %}
+
+{% block content %}
+<div class="row-fluid">
+  <div class="span1">
+  </div>
+  <div class="span10">
+    <div class="hero-unit">
+      <p>Welcome back, admin!</p>
+      <table class="table table-striped table-bordered">
+        <tr>
+          <th>First Name</th>
+          <th>Last Name</th>
+          <th>Age</th>
+          <th>School</th>
+        </tr>
+        {% for s in students %}
+          <tr>
+            <td>{{ s.firstname }}</td>
+            <td>{{ s.lastname }}</td>
+            <td>{{ s.age }}</td>
+            <td>{{ s.school }}</td>
+          </tr>
+        {% endfor %}
+      </table>
+    </div>
+  </div><!--/span-->
+</div><!--/row-->
+{% endblock %}
