@@ -17,7 +17,8 @@ class ExportController(Controller):
         if t is None:
             raise web.notfound()
 
-        uid = auth.user().user_id()
+        uid = t.uid
+        t.delete()
         web.header('Content-Type', 'application/json', unique=True)
         return self.dump(uid)
 

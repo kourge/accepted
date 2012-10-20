@@ -4,7 +4,7 @@ import web
 import auth
 import controller
 from profilecontroller import ProfileController
-from resumecontroller import ResumeController
+from resumecontroller import ResumeController, ResumeGenerationController
 from exportcontroller import ExportController
 
 
@@ -13,6 +13,7 @@ urls = (
     r'/logout', 'logout',
     r'/profile', 'ProfileController',
     r'/resume', 'ResumeController',
+    r'/resume/create', 'ResumeGenerationController',
     r'/export/(.+)', 'ExportController',
     r'/', 'IndexController',
 )
@@ -20,6 +21,7 @@ urls = (
 
 class IndexController(controller.Controller):
     pass
+
 
 class login(object):
     def GET(self):
