@@ -38,13 +38,22 @@
           </a>
           <a class="brand" href="#">Accepted!</a>
           <div class="nav-collapse collapse">
-            <p class="navbar-text pull-right">
-              <span class="navbar-link">Logged in as</span> <a href="#" class="navbar-user-info"> {{ name }}</a>
-            </p>
             <ul class="nav">
               <li class="active"><a href="#">Home</a></li>
+              {% if user %}
               <li><a href="#profile">Profile</a></li>
               <li><a href="#resume">Resume</a></li>
+              {% endif %}
+            </ul>
+            <ul class="nav pull-right">
+              {% if user %}
+              <li class="navbar-user-info"><a>
+                {{ user.nickname() }}
+                </a></li>
+              <li><a href="/logout">Logout</a></li>
+              {% else %}
+              <li><a href="/login">Log In</a></li>
+              {% endif %}
             </ul>
           </div><!--/.nav-collapse -->
         </div>

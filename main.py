@@ -14,13 +14,8 @@ urls = (
 
 class index(object):
     def GET(self):
-        user = users.get_current_user()
-        if not user:
-            name = "Guest"
-        else:
-            name = user.nickname()
         template_values = {
-            'name' : name,
+            'user' : auth.user(),
         }      
         template = jinja_environment.get_template('templates/index.html')
         return template.render(template_values)
