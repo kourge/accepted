@@ -31,8 +31,8 @@ class ExportController(Controller):
             if e:
                 export.update(db.to_dict(e))
 
-        for subject in SatSubjectScore.filter('uid =', uid):
-            pass
+        #for subject in SatSubjectScore.filter('uid =', uid):
+        #    pass
 
         return json.dumps(export)
 
