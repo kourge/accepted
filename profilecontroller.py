@@ -5,13 +5,6 @@ from controller import Controller
 from models import Profile
 
 class ProfileController(Controller):
-    whitelist_attrs = [
-        'firstname', 'lastname', 'age', 'school'
-    ]
-
-    int_attrs = [
-        'age'
-    ]
 
     def __init__(self):
         self.key = str(auth.user().user_id())
@@ -22,9 +15,8 @@ class ProfileController(Controller):
 
     def POST(self):
         params = web.input()
-        attrs = {k : params[k] for k in self.whitelist_attrs}
-        for k in self.int_attrs:
-            attrs[k] = int(attrs[k])
+        attrs = {k : params[k] for k in ['firstname', 'lastname', 'age', 'school']}
+        attrs['age'] = int(attrs['age'])
         attrs['uid'] = self.key
 
         p = Profile.get_by_key_name(self.key)
