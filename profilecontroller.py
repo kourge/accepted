@@ -5,22 +5,31 @@ from controller import Controller
 from models import Profile
 
 class ProfileController(Controller):
+    whitelist_attrs = [
+        'firstname', 'lastname', 'age', 'school'
+    ]
+
+    int_attrs = [
+        'age'
+    ]
+
+    def __init__(self):
+        self.key = str(auth.user().user_id())
+
     def GET(self):
-        key = str(auth.user().user_id())
-        p = Profile.get_by_key_name(key) or {}
+        p = Profile.get_by_key_name(self.key) or {}
         return super(self.__class__, self).GET({'profile': p})
 
     def POST(self):
         params = web.input()
-        key = str(auth.user().user_id())
+        attrs = {k : params[k] for k in self.whitelist_attrs}
+        for k in self.int_attrs:
+            attrs[k] = int(attrs[k])
+        attrs['uid'] = self.key
 
-        attrs = {k : params[k] for k in ['firstname', 'lastname', 'age', 'school']}
-        attrs['age'] = int(attrs['age'])
-        attrs['uid'] = key
-
-        p = Profile.get_by_key_name(key)
+        p = Profile.get_by_key_name(self.key)
         if not p:
-            p = Profile(key_name=key, **attrs)
+            p = Profile(key_name=self.key, **attrs)
         else:
             for k, v in attrs.items():
                 setattr(p, k, v)
