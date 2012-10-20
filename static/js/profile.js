@@ -4,6 +4,6 @@ $(document).ready(function() {
 
 function clone_sat_subject() {
     var clone = $($(".sat_subject")[0]).clone();
-    clone.children()[2].value = "";  
+    clone.children()[1].value = "";  
     $($(".sat_subject").last()).after(clone);
 }
