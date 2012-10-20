@@ -7,7 +7,7 @@ class Activity(db.Model):
     uid = db.StringProperty(required=True, indexed=True)
 
     type = db.StringProperty(
-        required=True, choices=set(['sports', 'extracurriculars'])
+        required=True, choices=set(['sports', 'extracurriculars', 'work'])
     )
     name = db.StringProperty(required=True)
     start_year = db.IntegerProperty(required=True)
@@ -69,6 +69,8 @@ class Profile(db.Model):
 
     age = db.IntegerProperty(required=True)
     school = db.StringProperty(required=True)
+
+    email = db.EmailProperty(required=True)
 
 
 class Token(db.Model):

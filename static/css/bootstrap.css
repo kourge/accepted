@@ -5183,3 +5183,9 @@ i[class^="icon-"] {
 .affix {
   position: fixed;
 }
+.small-text-input {
+  width: 40px;
+}
+.inline-label {
+  display: inline;
+}

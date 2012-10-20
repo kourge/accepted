@@ -32,6 +32,7 @@ class ProfileController(Controller):
         attrs = {k : params[k] for k in ['firstname', 'lastname', 'age', 'school']}
         attrs['age'] = int(attrs['age'])
         attrs['uid'] = self.key
+        attrs['email'] = auth.user().email();
 
         p = Profile.get_by_key_name(self.key)
         if not p:
