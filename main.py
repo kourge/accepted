@@ -15,6 +15,7 @@ urls = (
     r'/login', 'login',
     r'/logout', 'logout',
     r'/profile', 'profile',
+    r'/creator', 'creator',
     r'/resume', 'resume',
     r'/', 'index',
 )
@@ -35,6 +36,9 @@ class resume(renderer):
     pass
 
 class index(renderer):
+    pass
+
+class creator(renderer):
     pass
 
 class login(object):
