@@ -26,7 +26,7 @@ class ExportController(Controller):
         key = str(uid)
         export = {}
 
-        for model in [Profile, SatScore]:
+        for model in [Profile, SatScore, Activity, SatSubjectScore]:
             e = model.get_by_key_name(key)
             if e:
                 export.update(db.to_dict(e))
