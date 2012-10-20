@@ -2,7 +2,7 @@
 import web
 import auth
 from controller import Controller
-from models import Profile, SatSubjectScore, SatScore
+from models import Profile, SatSubjectScore, SatScore, Activity
 
 class ProfileController(Controller):
     require_logged_in = True
@@ -25,6 +25,8 @@ class ProfileController(Controller):
         params = web.input()
         self.process_profile(params)
         self.process_sat(params)
+        self.process_sat2(params)
+        self.process_extracurriculars(params)
 
         raise web.redirect(web.ctx.env.get('HTTP_REFERER'))
 
@@ -63,3 +65,44 @@ class ProfileController(Controller):
         except TransactionFailedError:
             # Ideally handle the error
             pass
+
+    def process_sat2(self, params):
+        attrs = {k : params[k] for k in ['sat_subject', 'sat_subject_score']}
+        attrs['subject'] = attrs['sat_subject']
+        attrs['score'] = int(attrs['sat_subject_score'])
+        attrs['uid'] = self.key
+
+        s = SatSubjectScore.get_by_key_name(self.key)
+
+        if not s:
+            s = SatSubjectScore(key_name=self.key, **attrs)
+        else:
+            for k, v in attrs.iteritems():
+                setattr(s, k, v)
+        try:
+            s.put()
+        except TransactionFailedError:
+            # Ideally handle the error
+            pass
+
+    def process_extracurriculars(self, params):
+        attrs = {k : params[k] for k in ['extracurricular', 'extracurricular_start', 'extracurricular_end']}
+        attrs['name'] = attrs['extracurricular']
+        attrs['uid'] = self.key
+        attrs['start_year'] = int(attrs['extracurricular_start'])
+        attrs['end_year'] = int(attrs['extracurricular_end'])
+        attrs['type'] = 'extracurriculars'
+
+        s = Activity.get_by_key_name(self.key)
+
+        if not s:
+            s = Activity(key_name=self.key, **attrs)
+        else:
+            for k, v in attrs.iteritems():
+                setattr(s, k, v)
+        try:
+            s.put()
+        except TransactionFailedError:
+            # Ideally handle the error
+            pass
+

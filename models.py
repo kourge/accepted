@@ -54,7 +54,7 @@ class SatSubjectScore(db.Model):
     ]
 
     subject = db.StringProperty(
-        required=True, choices=set([x for l in _subjects.values() for x in l])
+        required=True
     )
     score = db.IntegerProperty(required=True, validator=validate_sat_score)
 
