@@ -33,16 +33,17 @@
           <input type="text" id="school" name="school"
                  value="{{ profile.school }}" />
 
-          <label for="reading">SAT Reading: </label>
-          <input type="text" id="reading" name="reading"
+          <h4>SAT</h4>
+          <label for="reading" class="inline-label">Reading: </label>
+          <input type="text" id="reading" name="reading" class="small-text-input"
                  value="{{ sat.reading }}" />
 
-          <label for="math">SAT Math: </label>
-          <input type="text" id="math" name="math"
+          <label for="math" class="inline-label">Math: </label>
+          <input type="text" id="math" name="math" class="small-text-input"
                  value="{{ sat.math }}" />
 
-          <label for="writing">SAT Writing: </label>
-          <input type="text" id="writing" name="writing"
+          <label for="writing" class="inline-label">Writing: </label>
+          <input type="text" id="writing" name="writing" class="small-text-input"
                  value="{{ sat.writing }}" />
 
           <label for="sat_ii_topic">SAT II</label>
@@ -57,6 +58,27 @@
           </select>
           <input type="text" id="sat_ii_score" name="sat_ii_score"
                  value="" />
+
+          <h4>Extracurriculars</h4>
+          <!--<label class="inline-label" for="extracurricular">-</label>-->
+          <input type="text" id="extracurricular" name="extracurricular"
+                 value=""  class="inline-label"/>
+          <label class="inline-label" for="extracurricular">Start Year</label>
+          <input type="text" id="extracurricular_start" name="extracurricular_start"
+                 value="" class="small-text-input"/>
+          <label class="inline-label" for="extracurricular">End Year</label>
+          <input type="text" id="extracurricular_end" name="extracurricular_end"
+                 value="" class="small-text-input"/>
+
+          <h4>Sports</h4>
+          <input type="text" id="sport" name="sport"
+                 value=""  class="inline-label"/>
+          <label class="inline-label" for="sport">Start Year</label>
+          <input type="text" id="sport_start" name="sport_start"
+                 value="" class="small-text-input"/>
+          <label class="inline-label" for="sport">End Year</label>
+          <input type="text" id="sport_end" name="sport_end"
+                 value="" class="small-text-input"/>
 
           <br />
           <input type="submit" class="btn" value="Submit" />
