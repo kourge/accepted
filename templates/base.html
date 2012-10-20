@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+
+    {% block head %}
+    <title>{% block title %}{% endblock %}</title>
+    {% endblock %}
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <link href="../static/css/bootstrap.css" rel="stylesheet">
+    <style type="text/css">
+      body {
+        padding-top: 60px;
+        padding-bottom: 40px;
+      }
+      .sidebar-nav {
+        padding: 9px 0;
+      }
+    </style>
+    <link href="../static/css/bootstrap-responsive.css" rel="stylesheet">
+
+    <!--[if lt IE 9]>
+      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+  </head>
+
+  <body>
+    <div class="navbar navbar-inverse navbar-fixed-top">
+      <div class="navbar-inner">
+        <div class="container-fluid">
+          <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </a>
+          <a class="brand" href="#">Accepted!</a>
+          <div class="nav-collapse collapse">
+            <ul class="nav">
+              <li><a href="/">Home</a></li>
+              {% if user %}
+              <li><a href="/profile">Profile</a></li>
+              <li><a href="/resume">Resume</a></li>
+              {% endif %}
+            </ul>
+            <ul class="nav pull-right">
+              {% if user %}
+              <li class="navbar-user-info"><a>
+                {{ user.nickname() }}
+                </a></li>
+              <li><a href="/logout">Log Out</a></li>
+              {% else %}
+              <li><a href="/login">Log In</a></li>
+              {% endif %}
+            </ul>
+          </div><!--/.nav-collapse -->
+        </div>
+      </div>
+    </div>
+
+    <div class="container-fluid">
+      {% block content %}
+      <div class="row-fluid">
+        <div class="span1">
+        </div>
+        <div class="span10">
+          {% if not user %}
+          <div class="hero-unit">
+            <h3>Log In</h3>
+            <p>Log in with your Google Account to get started!</p>
+            <p><a class="btn btn-primary btn-large" href="/login">Log In! &raquo;</a></p>
+          </div>
+          {% elif not has_profile %}
+          <div class="hero-unit">
+            <h2>Create your profile!</h2>
+            <p><a class="btn btn-primary btn-large">Get started! &raquo;</a></p>
+          </div>
+          {% else %}
+          <p>Hai</p>
+          {% endif %}
+        </div><!--/span-->
+      </div><!--/row-->
+      {% endblock %}
+
+      <hr>
+
+      <footer>
+        <p>Yarrrrr</p>
+      </footer>
+
+    </div><!--/.fluid-container-->
+
+    <!-- ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="../static/js/jquery.min.js"></script>
+    <script src="../static/js/bootstrap-transition.js"></script>
+    <script src="../static/js/bootstrap-alert.js"></script>
+    <script src="../static/js/bootstrap-modal.js"></script>
+    <script src="../static/js/bootstrap-dropdown.js"></script>
+    <script src="../static/js/bootstrap-scrollspy.js"></script>
+    <script src="../static/js/bootstrap-tab.js"></script>
+    <script src="../static/js/bootstrap-tooltip.js"></script>
+    <script src="../static/js/bootstrap-popover.js"></script>
+    <script src="../static/js/bootstrap-button.js"></script>
+    <script src="../static/js/bootstrap-collapse.js"></script>
+    <script src="../static/js/bootstrap-carousel.js"></script>
+    <script src="../static/js/bootstrap-typeahead.js"></script>
+
+  </body>
+</html>

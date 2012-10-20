@@ -9,17 +9,27 @@ jinja_environment = jinja2.Environment(
 urls = (
     r'/login', 'login',
     r'/logout', 'logout',
+    r'/profile', 'profile',
+    r'/resume', 'resume',
     r'/', 'index',
 )
 
-class index(object):
+class renderer(object):
     def GET(self):
-        template_values = {
+        return jinja_environment.get_template(
+            'templates/%s.html' % (self.__class__.__name__,)
+        ).render({
             'user' : auth.user(),
-        }      
-        template = jinja_environment.get_template('templates/index.html')
-        return template.render(template_values)
+        })
 
+class profile(renderer):
+    pass
+
+class resume(renderer):
+    pass
+
+class index(renderer):
+    pass
 
 class login(object):
     def GET(self):
@@ -28,7 +38,7 @@ class login(object):
 
 class logout(object):
     def GET(self):
-        return auth.logout(web.ctx.env.get('HTTP_REFERER'))
+        return auth.logout('/')
 
 
 app = web.application(urls, globals()).wsgifunc()
