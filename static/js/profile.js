@@ -3,6 +3,11 @@ $(document).ready(function() {
    $("#add_extracurricular").click(clone_extracurricular);
    $("#add_sport").click(clone_sport);
    $("#add_work").click(clone_work);
+   $(".icon-remove").click(function() {
+       /*var parent = $(this).parent();
+       if (
+        $(this).parent().remove();*/
+    });
 });
 
 function clone_sat_subject() {
