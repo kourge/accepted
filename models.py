@@ -3,24 +3,9 @@ import web
 from google.appengine.ext import db
 
 
-class Profile(db.Model):
-    """Models a profile."""
-    # We should explicitly store the user ID, since the User object does not update
-    # accordingly when the user changes email address.
+class Activity(db.Model):
     uid = db.IntegerProperty(required=True, indexed=True)
 
-    firstname = db.StringProperty(required=True)
-    lastname = db.StringProperty(required=True)
-
-    age = db.IntegerProperty(required=True)
-    school = db.StringProperty(required=True)
-
-    activities = db.ListProperty(Activity)
-    sat_score = db.ReferenceProperty(SatScore)
-    sat_subject_scores = db.ListProperty(SatSubjectScore)
-
-
-class Activity(db.Model):
     """An activity such as sports or extracurriculars."""
     type = db.StringProperty(
         required=True, choices=set(['sports', 'extracurriculars'])
@@ -36,11 +21,15 @@ def validate_sat_score(value):
 
 
 class SatScore(db.Model):
+    uid = db.IntegerProperty(required=True, indexed=True)
+
     writing = db.IntegerProperty(required=True, validator=validate_sat_score)
     reading = db.IntegerProperty(required=True, validator=validate_sat_score)
     math = db.IntegerProperty(required=True, validator=validate_sat_score)
 
 class SatSubjectScore(db.Model):
+    uid = db.IntegerProperty(required=True, indexed=True)
+
     _subjects = {
         'General': [
             'Literature', 'United States (U.S.) History', 'World History',
@@ -69,5 +58,18 @@ class SatSubjectScore(db.Model):
         required=True, choices=set([x for l in _subjects.values() for x in l])
     )
     score = db.IntegerProperty(required=True, validator=validate_sat_score)
+
+
+class Profile(db.Model):
+    """Models a profile."""
+    # We should explicitly store the user ID, since the User object does not update
+    # accordingly when the user changes email address.
+    uid = db.IntegerProperty(required=True, indexed=True)
+
+    firstname = db.StringProperty(required=True)
+    lastname = db.StringProperty(required=True)
+
+    age = db.IntegerProperty(required=True)
+    school = db.StringProperty(required=True)
 
 
