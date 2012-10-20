@@ -1,10 +1,15 @@
 #!/usr/bin/env python
-import web, os, jinja2
+import web
+import os
+import jinja2
 from google.appengine.api import users
+
+from models import *
 import auth
 
 jinja_environment = jinja2.Environment(
-    loader=jinja2.FileSystemLoader(os.path.dirname(__file__)))
+    loader=jinja2.FileSystemLoader(os.path.dirname(__file__))
+)
 
 urls = (
     r'/login', 'login',
