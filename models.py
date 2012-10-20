@@ -34,7 +34,7 @@ class SatScore(db.Model):
     math = db.IntegerProperty(required=True, validator=validate_sat_score)
 
 class SatSubjectScore(db.Model):
-    subjects = {
+    _subjects = {
         'General': [
             'Literature', 'United States (U.S.) History', 'World History',
             'Mathematics Level 1', 'Mathematics Level 2',
@@ -54,12 +54,12 @@ class SatSubjectScore(db.Model):
         ]
     }
 
-    subject_categories = [
+    _subject_categories = [
         'General', 'Languages: Reading Only', 'Languages: Reading and Listening'
     ]
 
     subject = db.StringProperty(
-        required=True, choices=set([x for l in subjects.values() for x in l])
+        required=True, choices=set([x for l in _subjects.values() for x in l])
     )
     score = db.IntegerProperty(required=True, validator=validate_sat_score)
 
