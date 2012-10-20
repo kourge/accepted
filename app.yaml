@@ -11,7 +11,6 @@ handlers:
 
 - url: /.*
   script: main.app
-  login: required
 
 libraries:
 - name: jinja2
