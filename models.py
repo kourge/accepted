@@ -71,3 +71,7 @@ class Profile(db.Model):
     school = db.StringProperty(required=True)
 
 
+class Token(db.Model):
+    uid = db.StringProperty(required=True, indexed=True)
+
+
