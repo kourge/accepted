@@ -11,6 +11,10 @@ jinja_environment = jinja2.Environment(
 
 class Controller(object):
     def GET(self, variables={}):
+        name = self.__class__.__name__.replace('Controller', '').lower()
+        defaults = {'user': auth.user()}
+        defaults.update(variables)
+
         return jinja_environment.get_template(
-            'templates/%s.html' % (self.__class__.__name__,)
-        ).render(dict({'user': auth.user()}, **variables))
+            'templates/%s.html' % (name,)
+        ).render(defaults)

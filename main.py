@@ -12,7 +12,7 @@ urls = (
     r'/logout', 'logout',
     r'/profile', 'ProfileController',
     r'/resume', 'ResumeController',
-    r'/', 'index',
+    r'/', 'IndexController',
 )
 
 
