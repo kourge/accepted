@@ -19,23 +19,33 @@
 
   {% else %}
       <p>Enter some basic information to get started!</p>
+      <br />
+
       <form action="/profile" method="post">
         <fieldset>
-          <label for="firstname">First Name: </label>
+          <h4>First Name</h4>
           <input type="text" id="firstname" name="firstname"
                  value="{{ profile.firstname }}" />
+          <br />
+          <br />
 
-          <label for="lastname">Last Name: </label>
+          <h4>Last Name</h4>
           <input type="text" id="lastname" name="lastname"
                  value="{{ profile.lastname }}" />
+          <br />
+          <br />
 
-          <label for="age">Age: </label>
+          <h4>Age</h4>
           <input type="text" id="age" name="age"
                  value="{{ profile.age }}" />
+          <br />
+          <br />
 
-          <label for="school">School: </label>
+          <h4>School</h4> 
           <input type="text" id="school" name="school"
                  value="{{ profile.school }}" />
+          <br />
+          <br />
 
           <h4>SAT</h4>
           <label for="reading" class="inline-label">Reading: </label>
@@ -49,7 +59,6 @@
           <label for="writing" class="inline-label">Writing: </label>
           <input type="text" id="writing" name="writing" class="small-text-input"
                  value="{{ sat.writing }}" />
-
           <br />
           <br />
           
