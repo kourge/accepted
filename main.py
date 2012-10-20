@@ -1,5 +1,6 @@
 #!/usr/bin/env python
 import web
+from models import *
 
 
 urls = (
