@@ -15,6 +15,11 @@ class ProfileController(Controller):
 
     def POST(self):
         params = web.input()
+        self.process_profile(params)
+
+        raise web.redirect(web.ctx.env.get('HTTP_REFERER'))
+
+    def process_profile(self, params):
         attrs = {k : params[k] for k in ['firstname', 'lastname', 'age', 'school']}
         attrs['age'] = int(attrs['age'])
         attrs['uid'] = self.key
@@ -31,6 +36,4 @@ class ProfileController(Controller):
         except TransactionFailedError:
             # Ideally handle the error
             pass
-
-        raise web.redirect(web.ctx.env.get('HTTP_REFERER'))
 
