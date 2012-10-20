@@ -12,6 +12,10 @@ class Profile(db.Model):
     age = db.IntegerProperty(required=True)
     school = db.StringProperty(required=True)
 
+    activities = db.ListProperty(Activity)
+    sat_score = db.ReferenceProperty(SatScore)
+    sat_subject_scores = db.ListProperty(SatSubjectScore)
+
 
 class Activity(db.Model):
     """An activity such as sports or extracurriculars."""
