@@ -9,6 +9,9 @@ class Profile(db.Model):
     # accordingly when the user changes email address.
     uid = db.IntegerProperty(required=True, indexed=True)
 
+    firstname = db.StringProperty(required=True)
+    lastname = db.StringProperty(required=True)
+
     age = db.IntegerProperty(required=True)
     school = db.StringProperty(required=True)
 
