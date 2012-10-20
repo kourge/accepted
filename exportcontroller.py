@@ -8,8 +8,18 @@ from google.appengine.ext import db
 
 class ExportController(Controller):
     def GET(self, token):
+        t = None
+        try:
+            t = Token.get_by_id(int(token))
+        except:
+            pass
+
+        if t is None:
+            raise web.notfound()
+
+        uid = auth.user().user_id()
         web.header('Content-Type', 'application/json', unique=True)
-        return self.dump(auth.user().user_id())
+        return self.dump(uid)
 
     def dump(self, uid):
         key = str(uid)
