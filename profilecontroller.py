@@ -18,7 +18,12 @@ class ProfileController(Controller):
         attrs['age'] = int(attrs['age'])
         attrs['uid'] = key
 
-        p = Profile.get_by_key_name(key) or Profile(key_name=key, **attrs)
+        p = Profile.get_by_key_name(key)
+        if not p:
+            p = Profile(key_name=key, **attrs)
+        else:
+            for k, v in attrs.items():
+                setattr(p, k, v)
 
         try:
             p.put()
