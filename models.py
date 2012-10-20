@@ -70,6 +70,8 @@ class Profile(db.Model):
     age = db.IntegerProperty(required=True)
     school = db.StringProperty(required=True)
 
+    email = db.EmailProperty(required=True)
+
 
 class Token(db.Model):
     uid = db.StringProperty(required=True, indexed=True)
