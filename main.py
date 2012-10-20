@@ -6,6 +6,7 @@ import controller
 from profilecontroller import ProfileController
 from resumecontroller import ResumeController
 from creatorcontroller import CreatorController
+from exportcontroller import ExportController
 
 
 urls = (
@@ -14,6 +15,7 @@ urls = (
     r'/creator', 'CreatorController',
     r'/profile', 'ProfileController',
     r'/resume', 'ResumeController',
+    r'/export/(.+)', 'ExportController',
     r'/', 'IndexController',
 )
 

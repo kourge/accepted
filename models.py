@@ -4,7 +4,7 @@ from google.appengine.ext import db
 
 
 class Activity(db.Model):
-    uid = db.IntegerProperty(required=True, indexed=True)
+    uid = db.StringProperty(required=True, indexed=True)
 
     type = db.StringProperty(
         required=True, choices=set(['sports', 'extracurriculars'])
@@ -20,14 +20,14 @@ def validate_sat_score(value):
 
 
 class SatScore(db.Model):
-    uid = db.IntegerProperty(required=True, indexed=True)
+    uid = db.StringProperty(required=True, indexed=True)
 
     writing = db.IntegerProperty(required=True, validator=validate_sat_score)
     reading = db.IntegerProperty(required=True, validator=validate_sat_score)
     math = db.IntegerProperty(required=True, validator=validate_sat_score)
 
 class SatSubjectScore(db.Model):
-    uid = db.IntegerProperty(required=True, indexed=True)
+    uid = db.StringProperty(required=True, indexed=True)
 
     _subjects = {
         'General': [
@@ -62,7 +62,7 @@ class SatSubjectScore(db.Model):
 class Profile(db.Model):
     # We should explicitly store the user ID, since the User object does not update
     # accordingly when the user changes email address.
-    uid = db.IntegerProperty(required=True, indexed=True)
+    uid = db.StringProperty(required=True, indexed=True)
 
     firstname = db.StringProperty(required=True)
     lastname = db.StringProperty(required=True)

@@ -12,22 +12,26 @@
       <p>Log in with your Google Account to get started!</p>
       <p><a class="btn btn-primary btn-large" href="/login">Log In! &raquo;</a></p>
     </div>
-  {% elif profile %}
 
   {% else %}
       <p>Enter some basic information to get started!</p>
       <form action="/profile" method="post">
         <label for="firstname">First Name: </label>
-        <input type="text" id="firstname" name="firstname" />
+        <input type="text" id="firstname" name="firstname"
+               value="{{ profile.firstname }}" />
 
         <label for="lastname">Last Name: </label>
-        <input type="text" id="lastname" name="lastname" />
+        <input type="text" id="lastname" name="lastname"
+               value="{{ profile.lastname }}" />
 
         <label for="age">Age: </label>
-        <input type="text" id="age" name="age" />
+        <input type="text" id="age" name="age"
+               value="{{profile.age }}" />
 
         <label for="school">School: </label>
-        <input type="text" id="school" name="school" />
+        <input type="text" id="school" name="school"
+               value="{{profile.school }}" />
+
         <br />
         <input type="submit" class="btn" value="Submit" />
       </form>
