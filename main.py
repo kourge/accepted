@@ -7,6 +7,7 @@ from notfoundcontroller import NotFoundController
 from profilecontroller import ProfileController
 from resumecontroller import ResumeController
 from exportcontroller import ExportController
+from listcontroller import ListController
 
 
 urls = (
@@ -14,6 +15,7 @@ urls = (
     r'/logout', 'logout',
     r'/profile', 'ProfileController',
     r'/resume', 'ResumeController',
+    r'/admin', 'ListController',
     r'/export/(.+)', 'ExportController',
     r'/', 'IndexController',
 )

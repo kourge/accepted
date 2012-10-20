@@ -45,6 +45,9 @@
               <li><a href="/profile">Profile</a></li>
               <li><a href="/resume">Resume</a></li>
               {% endif %}
+              {% if admin %}
+              <li><a href="/admin">Admin</a></li>
+              {% endif %}
             </ul>
             <ul class="nav pull-right">
               {% if user %}

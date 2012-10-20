@@ -14,6 +14,9 @@
     </div>
   {% else %}
       <p>Welcome back.</p>
+      {% if admin %}
+          <p>Hello admin! <a href="/admin">admin page</a></p>
+      {% endif %}
   {% endif %}
     </div>
   </div><!--/span-->
