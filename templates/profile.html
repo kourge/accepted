@@ -52,7 +52,6 @@
 
           <br />
           <br />
-
           
           <h4>SAT II</h4>
           <div class="sat_subject">
@@ -70,37 +69,50 @@
           </div>
           <p id="add_sat_subject"><a class="btn">Add another SAT II Subject Test</a></p>
 
+          <br />
+          
           <h4>Extracurriculars</h4>
           <!--<label class="inline-label" for="extracurricular">-</label>-->
-          <input type="text" id="extracurricular" name="extracurricular"
+          
+          <div class="extracurricular">
+            <input type="text" class="extracurricular_name" name="extracurricular"
                  value=""  class="inline-label"/>
-          <label class="inline-label" for="extracurricular">Start Year</label>
-          <input type="text" id="extracurricular_start" name="extracurricular_start"
+            <label class="inline-label">Start Year</label>
+            <input type="text" class="extracurricular_start" name="extracurricular_start"
                  value="" class="small-text-input"/>
-          <label class="inline-label" for="extracurricular">End Year</label>
-          <input type="text" id="extracurricular_end" name="extracurricular_end"
-                 value="" class="small-text-input"/>
+            <label class="inline-label">End Year</label>
+            <input type="text" class="extracurricular_end" name="extracurricular_end"
+                 value="" class="small-text-input"/> 
+          </div>
+          <p id="add_extracurricular"><a class="btn">Add another extracurricular</a></p>
+          <br />
 
           <h4>Sports</h4>
-          <input type="text" id="sport" name="sport"
+          <div class="sport">
+            <input type="text" class="sport_name" name="sport"
                  value=""  class="inline-label"/>
-          <label class="inline-label" for="sport">Start Year</label>
-          <input type="text" id="sport_start" name="sport_start"
+            <label class="inline-label" for="sport">Start Year</label>
+            <input type="text" class="sport_start" name="sport_start"
                  value="" class="small-text-input"/>
-          <label class="inline-label" for="sport">End Year</label>
-          <input type="text" id="sport_end" name="sport_end"
+            <label class="inline-label" for="sport">End Year</label>
+            <input type="text" class="sport_end" name="sport_end"
                  value="" class="small-text-input"/>
+          </div>
+          <p id="add_sport"><a class="btn">Add another sport</a></p>
+          <br />
 
           <h4>Work Experience</h4>
-          <input type="text" id="work" name="work"
+          <div class="work">
+            <input type="text" class="work_name" name="work"
                  value=""  class="inline-label"/>
-          <label class="inline-label" for="work">Start Year</label>
-          <input type="text" id="work_start" name="work_start"
+            <label class="inline-label" for="work">Start Year</label>
+            <input type="text" class="work_start" name="work_start"
                  value="" class="small-text-input"/>
-          <label class="inline-label" for="work">End Year</label>
-          <input type="text" id="work_end" name="work_end"
+            <label class="inline-label" for="work">End Year</label>
+            <input type="text" class="work_end" name="work_end"
                  value="" class="small-text-input"/>
-
+          </div> 
+          <p id="add_work"><a class="btn">Add more work experience</a></p>
           <br />
           <input type="submit" class="btn btn-large btn-primary" value="Save" />
       </form>
