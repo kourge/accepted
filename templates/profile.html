@@ -27,26 +27,26 @@
 
           <label for="age">Age: </label>
           <input type="text" id="age" name="age"
-                 value="{{profile.age }}" />
+                 value="{{ profile.age }}" />
 
           <label for="school">School: </label>
           <input type="text" id="school" name="school"
-                 value="{{profile.school }}" />
+                 value="{{ profile.school }}" />
 
-          <label for="sat_reading">SAT Reading: </label>
-          <input type="text" id="sat_reading" name="sat_reading"
-                 value="" />
+          <label for="reading">SAT Reading: </label>
+          <input type="text" id="reading" name="reading"
+                 value="{{ sat.reading }}" />
 
-          <label for="sat_math">SAT Math: </label>
-          <input type="text" id="sat_math" name="sat_math"
-                 value="" />
+          <label for="math">SAT Math: </label>
+          <input type="text" id="math" name="math"
+                 value="{{ sat.math }}" />
 
-          <label for="sat_writing">SAT Writing: </label>
-          <input type="text" id="sat_writing" name="sat_writing"
-                 value="" />
+          <label for="writing">SAT Writing: </label>
+          <input type="text" id="writing" name="writing"
+                 value="{{ sat.writing }}" />
 
-          <label for="sat_ii_combo">SAT II</label>
-          <select id="sat_ii_combo" name="sat_ii_combo">
+          <label for="sat_ii_topic">SAT II</label>
+          <select id="sat_ii_topic" name="sat_ii_topic">
             {% for group in groups %}
             <optgroup label="{{ group }}">
               {% for subject in subjects[group] %}

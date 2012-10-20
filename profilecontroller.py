@@ -2,7 +2,7 @@
 import web
 import auth
 from controller import Controller
-from models import Profile, SatSubjectScore
+from models import Profile, SatSubjectScore, SatScore
 
 class ProfileController(Controller):
 
@@ -11,8 +11,10 @@ class ProfileController(Controller):
 
     def GET(self):
         p = Profile.get_by_key_name(self.key) or {}
+        s = SatScore.get_by_key_name(self.key) or {}
         return super(self.__class__, self).GET({
             'profile' : p,
+            'sat' : s,
             'groups' : SatSubjectScore._subject_categories,
             'subjects' : SatSubjectScore._subjects
         })
@@ -20,6 +22,7 @@ class ProfileController(Controller):
     def POST(self):
         params = web.input()
         self.process_profile(params)
+        self.process_sat(params)
 
         raise web.redirect(web.ctx.env.get('HTTP_REFERER'))
 
@@ -41,3 +44,19 @@ class ProfileController(Controller):
             # Ideally handle the error
             pass
 
+    def process_sat(self, params):
+        attrs = {k : int(params[k]) for k in ['writing', 'reading', 'math']}
+        attrs['uid'] = self.key
+
+        s = SatScore.get_by_key_name(self.key)
+        if not s:
+            s = SatScore(key_name=self.key, **attrs)
+        else:
+            for k, v in attrs.iteritems():
+                setattr(s, k, v)
+
+        try:
+            s.put()
+        except TransactionFailedError:
+            # Ideally handle the error
+            pass
