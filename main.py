@@ -1,44 +1,24 @@
 #!/usr/bin/env python
 import web
-import os
-import jinja2
-from google.appengine.api import users
 
-from models import *
 import auth
+import controller
+from profilecontroller import ProfileController
+from resumecontroller import ResumeController
+from creatorcontroller import CreatorController
 
-jinja_environment = jinja2.Environment(
-    loader=jinja2.FileSystemLoader(os.path.dirname(__file__))
-)
 
 urls = (
     r'/login', 'login',
     r'/logout', 'logout',
-    r'/profile', 'profile',
-    r'/creator', 'creator',
-    r'/resume', 'resume',
+    r'/creator', 'CreatorController',
+    r'/profile', 'ProfileController',
+    r'/resume', 'ResumeController',
     r'/', 'index',
 )
 
-class renderer(object):
-    def GET(self):
-        return jinja_environment.get_template(
-            'templates/%s.html' % (self.__class__.__name__,)
-        ).render({
-            'user' : auth.user(),
-        })
 
-class profile(renderer):
-    def POST(self):
-      return repr(web.input().keys())
-
-class resume(renderer):
-    pass
-
-class index(renderer):
-    pass
-
-class creator(renderer):
+class IndexController(controller.Controller):
     pass
 
 class login(object):
