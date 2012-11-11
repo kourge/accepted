@@ -73,10 +73,6 @@ class Profile(db.Model):
     email = db.EmailProperty(required=True)
 
 
-class Token(db.Model):
-    uid = db.StringProperty(required=True, indexed=True)
-
-
 class LastOnline(db.Model):
     uid = db.StringProperty(required=True, indexed=True)
     last_online = db.DateTimeProperty(required=True, auto_now=True)

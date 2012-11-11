@@ -2,4 +2,15 @@
 {% block title %}Resume{% endblock %}
 
 {% block content %}
+<div class="row-fluid">
+  <div class="span1"></div>
+  <div class="span10">
+    <div class="hero-unit">
+      <form action="{{ script_url }}" method="POST">
+        <input type="hidden" name="data" value="{{ data }}" />
+        <button type="submit" class="btn btn-primary">Create My Resume</button>
+      </form>
+    </div>
+  </div>
+</div>
 {% endblock %}

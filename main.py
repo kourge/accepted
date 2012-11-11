@@ -5,8 +5,7 @@ import auth
 import controller
 from notfoundcontroller import NotFoundController
 from profilecontroller import ProfileController
-from resumecontroller import ResumeController, ResumeGenerationController
-from exportcontroller import ExportController
+from resumecontroller import ResumeController
 from listcontroller import ListController
 
 
@@ -18,7 +17,6 @@ urls = (
     r'/resume/create', 'ResumeGenerationController',
     r'/admin', 'ListController',
     r'/admin/(.+)', 'ListController',
-    r'/export/(.+)', 'ExportController',
     r'/', 'IndexController',
 )
 

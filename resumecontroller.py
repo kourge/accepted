@@ -1,29 +1,36 @@
 #!/usr/bin/env python
 import web
 import auth
+import json
+import base64
+from google.appengine.ext import db
 from controller import Controller
-from models import Token
+from models import Profile, SatScore
 
 class ResumeController(Controller):
     require_logged_in = True
 
-    def __init__(self):
-        super(self.__class__, self).__init__()
-
-
-class ResumeGenerationController(Controller):
     SCRIPT_ID = 'AKfycbxzldDtnjeVMTEHjK5i4aYnFmNmryHf5qbVVqXal5uD6Dc48Hyb'
     SCRIPT_URL = 'https://script.google.com/macros/s/%s/exec' % (SCRIPT_ID,)
 
     def GET(self):
-        t = Token(uid=auth.user().user_id())
+        return super(self.__class__, self).GET({
+            'script_url' : self.SCRIPT_URL,
+            'data' : base64.b64encode(self.dump())
+        })
 
-        try:
-            t.put()
-        except:
-            pass
+    def dump(self):
+        key = str(auth.user().user_id())
+        export = {}
 
-        token = t.key().id()
-        raise web.redirect('%s?token=%s' % (self.SCRIPT_URL, token))
+        for model in [Profile, SatScore]:
+            e = model.get_by_key_name(key)
+            if e:
+                export.update(db.to_dict(e))
+
+        #for subject in SatSubjectScore.filter('uid =', uid):
+        #    pass
+
+        return json.dumps(export)
 
 
