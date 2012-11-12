@@ -4,19 +4,18 @@ from google.appengine.ext import db
 
 
 class Activity(db.Model):
+    _activities = ['sports', 'extracurriculars', 'work']
     uid = db.StringProperty(required=True, indexed=True)
 
-    type = db.StringProperty(
-        required=True, choices=set(['sports', 'extracurriculars', 'work'])
-    )
+    category = db.StringProperty(required=True, choices=set(_activities))
     name = db.StringProperty(required=True)
     start_year = db.IntegerProperty(required=True)
     end_year = db.IntegerProperty()
 
 
 def validate_sat_score(value):
-    if not (value <= 800 and value >= 200):
-        raise db.BadValueError()
+    if not (200 <= value <= 800):
+        raise db.BadValueError(value)
 
 
 class SatScore(db.Model):
